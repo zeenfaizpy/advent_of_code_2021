@@ -35,8 +35,8 @@
 
 
 
-
-def soultion():
+## Python <= 3.9
+def soultion_v1():
     horizontal_pos = 0
     depth = 0
 
@@ -53,5 +53,24 @@ def soultion():
     result =  horizontal_pos * depth
     print(result) # 1936494
 
+
+## Python >= 3.10
+def soultion_v2():
+    horizontal_pos = 0
+    depth = 0
+
+    with open("input.txt", "r") as fd:
+        for line in fd:
+            match line.split():
+                case ["forward", value]:
+                    horizontal_pos += int(value)
+                case ["up", value]:
+                    depth -= int(value)
+                case ["down", value]:
+                    depth += int(value)
+
+    result =  horizontal_pos * depth
+    print(result) # 1936494
+
 if __name__ == "__main__":
-    soultion()
+    soultion_v2()
